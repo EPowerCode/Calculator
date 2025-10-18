@@ -1,0 +1,20 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        WindowStyle="ThreeDBorderWindow"
+        mc:Ignorable="d" Title="Calculators" ResizeMode="NoResize" Height="200" Width="100">
+    <Border BorderThickness="5" BorderBrush="Black" Background="DarkBlue" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Button Click="MortgageBtn_Click" Name="MortgageBtn" Grid.Row="0">Mortgage Calculator</Button>
+            <Button Grid.Row="99" Height="25" Click="Close_Click" Name="Close">Close</Button>
+        </Grid>
+    </Border>
+</Window>

@@ -6,14 +6,20 @@
              xmlns:local="clr-namespace:ControlLibrary"
              mc:Ignorable="d">
     <Grid x:Name="RootGrid" Margin="5,2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Label FontSize="15" FontWeight="DemiBold" Padding="0,1" Grid.Column="0" x:Name="FieldLabel" HorizontalContentAlignment="Left" Content="{Binding Path=Label, FallbackValue=Label}" VerticalContentAlignment="Bottom"/>
-        <TextBox Grid.Row="1"  x:Name="FieldTextBox" FontSize="15" Text="{Binding Path=Value, FallbackValue=Value}" MinWidth="10" VerticalAlignment="Center"/>
+        <!-- Editable layout: label above textbox -->
+        <StackPanel Orientation="Vertical" x:Name="EditablePanel">
+            <TextBlock Text="{Binding Label}" FontSize="14" FontWeight="SemiBold" Foreground="#2D4159" Margin="0,0,0,6"/>
+            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, FallbackValue=$100}" HorizontalContentAlignment="Right" FontSize="15" Padding="6,2" MinWidth="120" BorderBrush="#D1D9E6" BorderThickness="1" />
+        </StackPanel>
+
+        <!-- Read-only layout: label and value in a 2-column grid for alignment using SharedSizeGroup -->
+        <Grid x:Name="ReadOnlyGrid" VerticalAlignment="Center" Visibility="Collapsed" IsSharedSizeScope="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="LabelGroup"/>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="ValueGroup"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="{Binding Label}" FontSize="14" FontWeight="SemiBold" Foreground="#2D4159" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,12,0"/>
+            <TextBlock Grid.Column="1" Text="{Binding Value}" FontSize="15" FontWeight="Bold" Foreground="#2D4159" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        </Grid>
     </Grid>
 </UserControl>
